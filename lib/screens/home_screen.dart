@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:minushia_demo/screens/info_screen.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   locationOptionsBuilder(locationName, locationSize) {
     return Padding(
-      padding: const EdgeInsets.symmetric( vertical: 10, horizontal: 20 ),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       child: Row(
         children: <Widget>[
           Container(
@@ -47,10 +48,25 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         // The body widget will be displayed under the SlidingSheet
         // and a parallax effect can be applied to it.
-        body: Center(
-          child: Container(
-            color: Colors.red,
-          ),
+        body: Stack(
+          children: <Widget>[
+            Container(
+              color: Colors.pink,
+            ),
+            Positioned(
+              top: 40,
+              right: 13,
+              child: IconButton(
+                icon: Icon(
+                  Icons.info,
+                  size: 35,
+                ),
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => InfoScreen())),
+                color: Colors.red,
+              ),
+            ),
+          ],
         ),
         builder: (context, state) {
           // This is the content of the sheet that will get
