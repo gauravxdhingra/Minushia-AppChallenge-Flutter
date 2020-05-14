@@ -61,7 +61,16 @@ class _LocationPreviewPageState extends State<LocationPreviewPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Text('propertyvalue'),
+                  Text(
+                    'PROPERTYVALUE',
+                    style: Theme.of(context).textTheme.headline2.copyWith(
+                          letterSpacing: 1.0,
+                          color: Colors.white,
+                          backgroundColor: Theme.of(context).primaryColor,
+                          fontWeight: FontWeight.normal,
+                          fontSize: 20,
+                        ),
+                  ),
                   Container(
                     color: Colors.red,
                     height: MediaQuery.of(context).size.height * 0.3,
@@ -82,7 +91,7 @@ class _LocationPreviewPageState extends State<LocationPreviewPage> {
           return Container(
             height: 500,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -92,13 +101,34 @@ class _LocationPreviewPageState extends State<LocationPreviewPage> {
                       thickness: 3,
                     ),
                   ),
-                  Text(widget.locationName),
-                  Text(
-                    widget.locationName == 'Campus' ? 'Testing' : 'Training',
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 5.0),
+                    child: Text(
+                      widget.locationName,
+                      style: Theme.of(context).textTheme.headline1,
+                    ),
                   ),
-                  Text(
-                    widget.locationArea,
-                    style: TextStyle(color: Colors.grey),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 5.0),
+                    child: Text(
+                      widget.locationName == 'Campus' ? 'Testing' : 'Training',
+                      style: Theme.of(context).textTheme.headline2.copyWith(
+                            fontSize: 18,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal,
+                          ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 5.0),
+                    child: Text(
+                      widget.locationArea,
+                      style: Theme.of(context).textTheme.headline2.copyWith(
+                            color: Colors.grey,
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                          ),
+                    ),
                   ),
                 ],
               ),

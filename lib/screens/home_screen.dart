@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: <Widget>[
           Container(
             height: 100,
-            width: 100,
+            width: 160,
             color: Colors.blue,
           ),
           Padding(
@@ -32,8 +32,23 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(locationName),
-                Text(locationSize),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 5, left: 10),
+                  child: Text(
+                    locationName,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline2
+                        .copyWith(fontSize: 25),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(
+                    locationSize,
+                    style: TextStyle(letterSpacing: 1.1),
+                  ),
+                ),
               ],
             ),
           )
@@ -52,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
           // Enable snapping. This is true by default.
           snap: true,
           // Set custom snapping points.
-          snappings: [0.4, 0.7, 1.0],
+          snappings: [0.45, 0.7, 1.0],
           // Define to what the snappings relate to. In this case,
           // the total available space that the sheet can expand to.
           positioning: SnapPositioning.relativeToAvailableSpace,
@@ -86,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
           return Container(
             height: 500,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -100,10 +115,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     'FLUTTER TEST',
                     style: Theme.of(context).textTheme.headline1.copyWith(),
                   ),
-                  Text('Testing'),
-                  Text(
-                    'Ramakrishnapura, Anekal Road, Chandapura P.O, Bengaluru, Karnataka 560099',
-                    style: TextStyle(color: Colors.grey),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5),
+                    child: Text('Testing'),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 15),
+                    child: Text(
+                      'Ramakrishnapura, Anekal Road, Chandapura P.O, Bengaluru, Karnataka 560099',
+                      style: TextStyle(color: Colors.grey),
+                    ),
                   ),
                   SizedBox(
                     height: 10,

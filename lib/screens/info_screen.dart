@@ -26,9 +26,12 @@ class InfoScreen extends StatelessWidget {
         ),
         title: Text(
           'Information',
-          style: TextStyle(
-            color: Theme.of(context).primaryColor,
-          ),
+          style: Theme.of(context).textTheme.headline2.copyWith(
+                color: Theme.of(context).primaryColor.withOpacity(
+                      0.5,
+                    ),
+                fontWeight: FontWeight.normal,
+              ),
         ),
       ),
       body: Stack(
@@ -56,7 +59,19 @@ class InfoScreen extends StatelessWidget {
                       child: Container(
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height * 0.07,
-                        child: Center(child: Text('LOG OUT')),
+                        child: Center(
+                          child: Text(
+                            'LOG OUT',
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline1
+                                .copyWith(
+                                    fontSize: 25,
+                                    color: Theme.of(context)
+                                        .primaryColor
+                                        .withOpacity(0.3)),
+                          ),
+                        ),
                         color: Colors.white,
                       ),
                       onTap: () {},

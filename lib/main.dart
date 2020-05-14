@@ -19,12 +19,20 @@ class MyApp extends StatelessWidget {
           headline1: TextStyle(
             color: Color(0xffEA4335),
             fontSize: 30,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w900,
+            letterSpacing: 1.1,
           ),
           headline2: TextStyle(
             color: Color(0xffEA4335),
             fontSize: 25,
             fontWeight: FontWeight.bold,
+            letterSpacing: 1.1,
+          ),
+          bodyText2: TextStyle(
+            // color: Color(0xffEA4335),
+            fontSize: 15,
+            // fontWeight: FontWeight.bold,
+            // letterSpacing: 1.1,
           ),
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
