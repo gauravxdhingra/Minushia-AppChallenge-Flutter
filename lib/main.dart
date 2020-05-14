@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -51,23 +51,23 @@ class _SplashScreenState extends State<SplashScreen> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => MusicHome(),
+        builder: (context) => LoginScreen(),
       ),
     );
   }
 
   initScreen(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: Center(
-          child: Container(
-        height: 80,
-        width: 80,
-        child: Image.asset(
-          "assets/Minushia.png",
-          fit: BoxFit.cover,
+        child: Container(
+          width: MediaQuery.of(context).size.width * 0.8,
+          child: Image.asset(
+            "assets/Minushia.png",
+            fit: BoxFit.cover,
+          ),
         ),
-      )),
+      ),
     );
   }
 }
