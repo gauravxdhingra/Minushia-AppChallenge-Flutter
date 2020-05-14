@@ -1,5 +1,6 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:minushia_demo/screens/login_screen.dart';
 
 class InfoScreen extends StatelessWidget {
   const InfoScreen({Key key}) : super(key: key);
@@ -228,7 +229,10 @@ class InfoScreen extends StatelessWidget {
                         ),
                         color: Colors.white,
                       ),
-                      onTap: () {},
+                      onTap: () => Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen())),
                     ),
                   ),
                 ],

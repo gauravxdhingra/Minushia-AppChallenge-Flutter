@@ -105,13 +105,12 @@ class _LocationPreviewPageState extends State<LocationPreviewPage> {
                   setState(() {
                     selectedItem = value;
                   });
-
                   // Action when new item is selected
                 },
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
+                  // border: Border.all(color: Colors.white),
                   borderRadius: const BorderRadius.all(Radius.circular(3.0)),
-                  color: Colors.white,
+                  // color: Colors.white,
                 ),
                 onMenuButtonToggle: (isToggle) {
                   print(isToggle);
@@ -142,8 +141,11 @@ class _LocationPreviewPageState extends State<LocationPreviewPage> {
         body: Container(
           width: MediaQuery.of(context).size.width,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
+              SizedBox(
+                height: 140,
+              ),
               Text(
                 '$selectedItem',
                 style: Theme.of(context).textTheme.headline2.copyWith(
@@ -154,22 +156,29 @@ class _LocationPreviewPageState extends State<LocationPreviewPage> {
                       fontSize: 20,
                     ),
               ),
+              SizedBox(
+                height: 45,
+              ),
               Container(
                 // height: MediaQuery.of(context).size.height * 0.3,
                 width: MediaQuery.of(context).size.width,
                 child: widget.locationName == 'Farm'
-                    ? Image.asset(
-                        'assets/farm.png',
-                        fit: BoxFit.cover,
+                    ? Hero(
+                        tag: 'farm',
+                        child: Image.asset(
+                          'assets/farm.png',
+                          fit: BoxFit.cover,
+                        ),
                       )
-                    : Image.asset(
-                        'assets/campus.png',
-                        fit: BoxFit.cover,
+                    : Hero(
+                        tag: 'campus',
+                        child: Image.asset(
+                          'assets/campus.png',
+                          fit: BoxFit.cover,
+                        ),
                       ),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.4,
-              )
+              SizedBox(),
             ],
           ),
         ),

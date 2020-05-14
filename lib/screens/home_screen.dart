@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:minushia_demo/screens/info_screen.dart';
 import 'package:minushia_demo/screens/location_preview_page.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,20 +15,28 @@ class _HomeScreenState extends State<HomeScreen> {
   locationOptionsBuilder(locationName, locationSize) {
     return GestureDetector(
       onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => LocationPreviewPage(
-                    locationName: locationName,
-                    locationArea: locationSize,
-                  ))),
+        context,
+        PageTransition(
+          type: PageTransitionType.fade,
+          child: LocationPreviewPage(
+            locationName: locationName,
+            locationArea: locationSize,
+          ),
+        ),
+        // MaterialPageRoute(
+        //     builder: (context) => LocationPreviewPage(
+        //           locationName: locationName,
+        //           locationArea: locationSize,
+        //         ))
+      ),
       child: Row(
         children: <Widget>[
           Container(
             height: 100,
             width: 160,
             child: locationName == 'Farm'
-                ? Image.asset('assets/farm.png')
-                : Image.asset('assets/campus.png'),
+                ? Hero(tag: 'farm', child: Image.asset('assets/farm.png'))
+                : Hero(tag: 'campus', child: Image.asset('assets/campus.png')),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -87,10 +96,16 @@ class _HomeScreenState extends State<HomeScreen> {
               child: IconButton(
                 icon: Icon(
                   Icons.info,
-                  size: 35,
+                  size: 40,
                 ),
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => InfoScreen())),
+                onPressed: () => Navigator.push(
+                    context,
+                    PageTransition(
+                        type: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 200),
+                        child: InfoScreen())),
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (context) => InfoScreen())),
                 color: Colors.red,
               ),
             ),
