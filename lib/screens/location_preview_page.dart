@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:menu_button/menu_button.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
 class LocationPreviewPage extends StatefulWidget {
@@ -12,6 +13,33 @@ class LocationPreviewPage extends StatefulWidget {
 }
 
 class _LocationPreviewPageState extends State<LocationPreviewPage> {
+  final Widget button = Row(
+    children: [
+      Container(
+        width: 220.0 - 43,
+        height: 40,
+        color: Colors.white,
+        // child: Flexible(
+        //   child: Icon(
+        //     Icons.layers,
+        //     color: Colors.white,
+        //   ),
+        // ),
+      ),
+      Container(
+        width: 43,
+        height: 40,
+        color: Color(0xffEA4335),
+        child: Icon(
+          Icons.layers,
+          color: Colors.white,
+        ),
+      ),
+    ],
+  );
+
+  String selectedItem = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,11 +59,68 @@ class _LocationPreviewPageState extends State<LocationPreviewPage> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              color: Colors.red,
-              child: IconButton(
-                icon: Icon(Icons.layers),
-                onPressed: () {},
+              // color: Colors.red,
+              child: MenuButton<String>(
+                edgeMargin: 0,
+                scrollPhysics: BouncingScrollPhysics(),
+                child: button,
+                // child: Icon(Icons.layers),
+                items: [
+                  'Orthomosaic',
+                  'Digital Elevation',
+                  'Digital Terrain',
+                  'Vegetation'
+                ],
+                topDivider: false,
+
+                itemBuilder: (value) => Container(
+                  color: Color(0xffEA4335),
+                  width: 220,
+                  height: 35,
+                  alignment: Alignment.centerLeft,
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        value,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      Icon(
+                        Icons.check_box_outline_blank,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                ),
+                toggledChild: Container(
+                  color: Color(0xffEA4335),
+                  child: button, // Widget displayed as the button,
+                ),
+                divider: Container(
+                  height: 0,
+                  color: Color(0xffEA4335),
+                ),
+                onItemSelected: (value) {
+                  setState(() {
+                    selectedItem = value;
+                  });
+
+                  // Action when new item is selected
+                },
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white),
+                  borderRadius: const BorderRadius.all(Radius.circular(3.0)),
+                  color: Colors.white,
+                ),
+                onMenuButtonToggle: (isToggle) {
+                  print(isToggle);
+                },
               ),
+              // IconButton(
+              //   icon: Icon(Icons.layers),
+              //   onPressed: () {},
+              // ),
             ),
           ),
         ],
@@ -60,7 +145,7 @@ class _LocationPreviewPageState extends State<LocationPreviewPage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Text(
-                'PROPERTYVALUE',
+                '$selectedItem',
                 style: Theme.of(context).textTheme.headline2.copyWith(
                       letterSpacing: 1.0,
                       color: Colors.white,
