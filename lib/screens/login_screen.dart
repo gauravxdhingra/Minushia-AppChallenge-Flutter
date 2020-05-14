@@ -27,9 +27,19 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  FlatButton loginButton(context) {
+  Widget loginButton(context) {
     return FlatButton(
-      child: Text('LOGIN'),
+      color: Theme.of(context).primaryColor,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+        child: Text(
+          'LOGIN',
+          style: Theme.of(context).textTheme.headline1.copyWith(
+                color: Colors.white,
+                fontSize: 25
+              ),
+        ),
+      ),
       onPressed: () => onSubmit(context),
     );
   }
@@ -37,14 +47,32 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Text('MOBILE NUMBER'),
-          inputField(false, mobileInputController),
-          Text('PASSWORD'),
-          inputField(true, passwordController),
-          loginButton(context),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 40),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              'MOBILE NUMBER',
+              style:
+                  Theme.of(context).textTheme.headline2.copyWith(fontSize: 17),
+            ),
+            inputField(false, mobileInputController),
+            SizedBox(
+              height: 70,
+            ),
+            Text(
+              'PASSWORD',
+              style:
+                  Theme.of(context).textTheme.headline2.copyWith(fontSize: 17),
+            ),
+            inputField(true, passwordController),
+            SizedBox(
+              height: 50,
+            ),
+            Center(child: loginButton(context)),
+          ],
+        ),
       ),
     );
   }

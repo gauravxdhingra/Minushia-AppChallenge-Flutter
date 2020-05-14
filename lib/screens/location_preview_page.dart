@@ -15,6 +15,7 @@ class _LocationPreviewPageState extends State<LocationPreviewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
@@ -46,7 +47,7 @@ class _LocationPreviewPageState extends State<LocationPreviewPage> {
           // Enable snapping. This is true by default.
           snap: true,
           // Set custom snapping points.
-          snappings: [0.4, 0.7, 1.0],
+          snappings: [0.25, 0.7, 1.0],
           // Define to what the snappings relate to. In this case,
           // the total available space that the sheet can expand to.
           positioning: SnapPositioning.relativeToAvailableSpace,
@@ -57,13 +58,12 @@ class _LocationPreviewPageState extends State<LocationPreviewPage> {
           children: <Widget>[
             Container(
               width: MediaQuery.of(context).size.width,
-              color: Colors.red,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Text('propertyvalue'),
                   Container(
-                    color: Colors.white,
+                    color: Colors.red,
                     height: MediaQuery.of(context).size.height * 0.3,
                     width: MediaQuery.of(context).size.width,
                   ),
@@ -81,11 +81,7 @@ class _LocationPreviewPageState extends State<LocationPreviewPage> {
           // height of the sheet.
           return Container(
             height: 500,
-            child:
-                // Center(
-                //   child: Text('This is the content of the sheet'),
-                // ),
-                Padding(
+            child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

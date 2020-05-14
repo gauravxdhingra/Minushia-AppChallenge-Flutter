@@ -85,11 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
           // height of the sheet.
           return Container(
             height: 500,
-            child:
-                // Center(
-                //   child: Text('This is the content of the sheet'),
-                // ),
-                Padding(
+            child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,7 +96,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       thickness: 3,
                     ),
                   ),
-                  Text('Flutter Test'),
+                  Text(
+                    'FLUTTER TEST',
+                    style: Theme.of(context).textTheme.headline1.copyWith(),
+                  ),
                   Text('Testing'),
                   Text(
                     'Ramakrishnapura, Anekal Road, Chandapura P.O, Bengaluru, Karnataka 560099',
