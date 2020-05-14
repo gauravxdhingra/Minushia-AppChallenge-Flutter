@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:minushia_demo/screens/info_screen.dart';
+import 'package:minushia_demo/screens/location_preview_page.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,8 +12,14 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   locationOptionsBuilder(locationName, locationSize) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+    return GestureDetector(
+      onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => LocationPreviewPage(
+                    locationName: locationName,
+                    locationArea: locationSize,
+                  ))),
       child: Row(
         children: <Widget>[
           Container(
@@ -20,11 +27,15 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 100,
             color: Colors.blue,
           ),
-          Column(
-            children: <Widget>[
-              Text(locationName),
-              Text(locationSize),
-            ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(locationName),
+                Text(locationSize),
+              ],
+            ),
           )
         ],
       ),
@@ -51,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Stack(
           children: <Widget>[
             Container(
-              color: Colors.pink,
+              color: Colors.yellow,
             ),
             Positioned(
               top: 40,
@@ -78,17 +89,33 @@ class _HomeScreenState extends State<HomeScreen> {
                 // Center(
                 //   child: Text('This is the content of the sheet'),
                 // ),
-                Column(
-              children: <Widget>[
-                Text('Flutter Test'),
-                Text('Testing'),
-                Text(
-                  'Ramakrishnapura, Anekal Road, Chandapura P.O, Bengaluru, Karnataka 560099',
-                  style: TextStyle(color: Colors.grey),
-                ),
-                locationOptionsBuilder('Campus', '14.2 ACRES'),
-                locationOptionsBuilder('Farm', '78 ACRES'),
-              ],
+                Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 150),
+                    child: Divider(
+                      thickness: 3,
+                    ),
+                  ),
+                  Text('Flutter Test'),
+                  Text('Testing'),
+                  Text(
+                    'Ramakrishnapura, Anekal Road, Chandapura P.O, Bengaluru, Karnataka 560099',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  locationOptionsBuilder('Campus', '14.2 ACRES'),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  locationOptionsBuilder('Farm', '78 ACRES'),
+                ],
+              ),
             ),
           );
         },
