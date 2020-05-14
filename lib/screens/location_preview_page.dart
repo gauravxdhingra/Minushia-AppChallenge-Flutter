@@ -47,42 +47,46 @@ class _LocationPreviewPageState extends State<LocationPreviewPage> {
           // Enable snapping. This is true by default.
           snap: true,
           // Set custom snapping points.
-          snappings: [0.25, 0.7, 1.0],
+          snappings: [0.18, 0.7, 1.0],
           // Define to what the snappings relate to. In this case,
           // the total available space that the sheet can expand to.
           positioning: SnapPositioning.relativeToAvailableSpace,
         ),
         // The body widget will be displayed under the SlidingSheet
         // and a parallax effect can be applied to it.
-        body: Stack(
-          children: <Widget>[
-            Container(
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Text(
-                    'PROPERTYVALUE',
-                    style: Theme.of(context).textTheme.headline2.copyWith(
-                          letterSpacing: 1.0,
-                          color: Colors.white,
-                          backgroundColor: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.normal,
-                          fontSize: 20,
-                        ),
-                  ),
-                  Container(
-                    color: Colors.red,
-                    height: MediaQuery.of(context).size.height * 0.3,
-                    width: MediaQuery.of(context).size.width,
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.5,
-                  )
-                ],
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Text(
+                'PROPERTYVALUE',
+                style: Theme.of(context).textTheme.headline2.copyWith(
+                      letterSpacing: 1.0,
+                      color: Colors.white,
+                      backgroundColor: Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 20,
+                    ),
               ),
-            ),
-          ],
+              Container(
+                // height: MediaQuery.of(context).size.height * 0.3,
+                width: MediaQuery.of(context).size.width,
+                child: widget.locationName == 'Farm'
+                    ? Image.asset(
+                        'assets/farm.png',
+                        fit: BoxFit.cover,
+                      )
+                    : Image.asset(
+                        'assets/campus.png',
+                        fit: BoxFit.cover,
+                      ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.4,
+              )
+            ],
+          ),
         ),
         builder: (context, state) {
           // This is the content of the sheet that will get

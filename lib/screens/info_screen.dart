@@ -1,11 +1,165 @@
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
 class InfoScreen extends StatelessWidget {
   const InfoScreen({Key key}) : super(key: key);
 
-  Column buildOptions() {
-    return Column(
-      children: <Widget>[],
+  buildOptions(context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 40),
+      child: Column(
+        children: <Widget>[
+          ExpandablePanel(
+            header: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Icon(
+                      Icons.brightness_1,
+                      color: Theme.of(context).primaryColor,
+                      size: 15,
+                    ),
+                    SizedBox(
+                      width: 25,
+                    ),
+                    Text(
+                      'Orthomosaic',
+                      style: Theme.of(context).textTheme.headline2.copyWith(
+                            fontSize: 22,
+                            fontWeight: FontWeight.normal,
+                          ),
+                    ),
+                  ],
+                ),
+                Divider(),
+              ],
+            ),
+            // collapsed: Text(
+            //   'yes',
+            //   softWrap: true,
+            //   maxLines: 2,
+            //   overflow: TextOverflow.ellipsis,
+            // ),
+            expanded: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: Text(
+                'Allow us to access the camera to take pictures and detect things',
+                softWrap: true,
+              ),
+            ),
+            // tapHeaderToExpand: true,
+            // hasIcon: true,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          ExpandablePanel(
+            header: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Icon(
+                      Icons.brightness_1,
+                      color: Theme.of(context).primaryColor,
+                      size: 15,
+                    ),
+                    SizedBox(
+                      width: 25,
+                    ),
+                    Text(
+                      'Digital Elevation',
+                      style: Theme.of(context).textTheme.headline2.copyWith(
+                            fontSize: 22,
+                            fontWeight: FontWeight.normal,
+                          ),
+                    )
+                  ],
+                ),
+                Divider(),
+              ],
+            ),
+            expanded: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: Text(
+                'Allow us to access the camera to take pictures and detect things',
+                softWrap: true,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          ExpandablePanel(
+            header: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Icon(
+                      Icons.brightness_1,
+                      color: Theme.of(context).primaryColor,
+                      size: 15,
+                    ),
+                    SizedBox(
+                      width: 25,
+                    ),
+                    Text(
+                      'Digital Terrain',
+                      style: Theme.of(context).textTheme.headline2.copyWith(
+                            fontSize: 22,
+                            fontWeight: FontWeight.normal,
+                          ),
+                    )
+                  ],
+                ),
+                Divider(),
+              ],
+            ),
+            expanded: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: Text(
+                'Allow us to access the location to provide you location based features like tracking your activities more accurately and allowing you to tag location',
+                softWrap: true,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          ExpandablePanel(
+            header: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Icon(
+                      Icons.brightness_1,
+                      color: Theme.of(context).primaryColor,
+                      size: 15,
+                    ),
+                    SizedBox(
+                      width: 25,
+                    ),
+                    Text(
+                      'Vegetation',
+                      style: Theme.of(context).textTheme.headline2.copyWith(
+                            fontSize: 22,
+                            fontWeight: FontWeight.normal,
+                          ),
+                    ),
+                  ],
+                ),
+                Divider(),
+              ],
+            ),
+            expanded: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: Text(
+                'Allow us to access the location to provide you location based features like tracking your activities more accurately and allowing you to tag location',
+                softWrap: true,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -39,7 +193,7 @@ class InfoScreen extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              buildOptions(),
+              buildOptions(context),
               Text(''),
             ],
           ),

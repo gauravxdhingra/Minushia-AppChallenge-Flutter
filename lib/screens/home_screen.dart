@@ -25,7 +25,9 @@ class _HomeScreenState extends State<HomeScreen> {
           Container(
             height: 100,
             width: 160,
-            color: Colors.blue,
+            child: locationName == 'Farm'
+                ? Image.asset('assets/farm.png')
+                : Image.asset('assets/campus.png'),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -77,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Stack(
           children: <Widget>[
             Container(
-              color: Colors.yellow,
+              child: Image.asset('assets/map.png'),
             ),
             Positioned(
               top: 40,

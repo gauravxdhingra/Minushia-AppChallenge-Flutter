@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:minushia_demo/screens/home_screen.dart';
+import 'package:http/http.dart' as http;
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key}) : super(key: key);
@@ -13,9 +16,30 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController passwordController = TextEditingController();
 
   final String url =
-      "https://www.google.com/url?q=http://3.85.225.88/accounts/login/&sa=D&ust=1589463692150000&usg=AFQjCNELIRRzU9g7NZf8_huuHZrFowrfxw";
+      // "https://www.google.com/url?q=http://3.85.225.88/accounts/login/&sa=D&ust=1589463692150000&usg=AFQjCNELIRRzU9g7NZf8_huuHZrFowrfxw";
+      "http://3.85.225.88/accounts/login/";
 
   onSubmit(context) {
+    // Future<http.Response> login() {
+    //   return http.post(
+    //     url,
+    //     headers: <String, String>{
+    //       'Content-Type': 'application/json; charset=UTF-8',
+    //     },
+    //     body: jsonEncode(<String, String>{
+    //       "mobile": "9880420891",
+    //       "password": "Sameer",
+    //       "secret_key": "c4081867-d9bf-47cf-a"
+    //     }),
+    //   );
+    // }
+
+    // login();
+// {
+//   "mobile" : "9880420891",
+// "password" : "Sameer",
+// "secret_key": "c4081867-d9bf-47cf-a"
+// }
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => HomeScreen()));
   }
@@ -34,10 +58,10 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
         child: Text(
           'LOGIN',
-          style: Theme.of(context).textTheme.headline1.copyWith(
-                color: Colors.white,
-                fontSize: 25
-              ),
+          style: Theme.of(context)
+              .textTheme
+              .headline1
+              .copyWith(color: Colors.white, fontSize: 25),
         ),
       ),
       onPressed: () => onSubmit(context),
