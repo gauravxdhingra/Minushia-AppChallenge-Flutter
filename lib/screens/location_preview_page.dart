@@ -87,7 +87,9 @@ class _LocationPreviewPageState extends State<LocationPreviewPage> {
                         style: TextStyle(color: Colors.white),
                       ),
                       Icon(
-                        Icons.check_box_outline_blank,
+                        value != selectedItem
+                            ? Icons.check_box_outline_blank
+                            : Icons.check_box,
                         color: Colors.white,
                       ),
                     ],

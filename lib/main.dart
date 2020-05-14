@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:page_transition/page_transition.dart';
+
 import 'screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -69,12 +71,14 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   route() {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => LoginScreen(),
-      ),
-    );
+    Navigator.pushReplacement(context,
+        PageTransition(type: PageTransitionType.fade, child: LoginScreen()));
+    // Navigator.pushReplacement(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (context) => LoginScreen(),
+    //   ),
+    // );
   }
 
   initScreen(BuildContext context) {

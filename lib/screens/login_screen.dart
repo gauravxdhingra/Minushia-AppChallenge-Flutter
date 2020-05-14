@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:minushia_demo/screens/home_screen.dart';
 import 'package:http/http.dart' as http;
+import 'package:page_transition/page_transition.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key}) : super(key: key);
@@ -40,8 +41,11 @@ class _LoginScreenState extends State<LoginScreen> {
 // "password" : "Sameer",
 // "secret_key": "c4081867-d9bf-47cf-a"
 // }
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => HomeScreen()));
+    // Navigator.pushReplacement(
+    //     context, MaterialPageRoute(builder: (context) => HomeScreen()));
+
+    Navigator.pushReplacement(context,
+        PageTransition(type: PageTransitionType.fade, child: HomeScreen()));
   }
 
   TextFormField inputField(obscureText, controller) {

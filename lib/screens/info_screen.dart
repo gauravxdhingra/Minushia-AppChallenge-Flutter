@@ -1,6 +1,7 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:minushia_demo/screens/login_screen.dart';
+import 'package:page_transition/page_transition.dart';
 
 class InfoScreen extends StatelessWidget {
   const InfoScreen({Key key}) : super(key: key);
@@ -231,8 +232,13 @@ class InfoScreen extends StatelessWidget {
                       ),
                       onTap: () => Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => LoginScreen())),
+                          PageTransition(
+                              type: PageTransitionType.fade,
+                              child: LoginScreen())),
+                      //  Navigator.pushReplacement(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => LoginScreen())),
                     ),
                   ),
                 ],
